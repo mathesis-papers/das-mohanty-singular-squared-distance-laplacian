@@ -1,0 +1,563 @@
+{
+  "arithmetic": "Exact rational arithmetic using Python standard library",
+  "checks": [
+    "omitted-list entry formulas equal the rank-one representation",
+    "constant-subspace rational congruence inertia",
+    "exact multiplicities of one quarter and one",
+    "singular full-matrix determinant, inertia, eigenspaces, row sums and cofactor"
+  ],
+  "corrected_interval_examples": 284,
+  "counterexample": {
+    "characteristic_polynomial": "x*(x-1)*(x-1/4)^4*(x+1/5)*(x+2)",
+    "descending_coefficients": [
+      "1",
+      "1/5",
+      "-21/8",
+      "143/80",
+      "-443/1280",
+      "-21/640",
+      "23/1280",
+      "-1/640",
+      "0"
+    ],
+    "distance_cofactor_sum": -5120,
+    "distance_determinant": 1280,
+    "inertia": [
+      5,
+      1,
+      2
+    ],
+    "part_sizes": [
+      1,
+      1,
+      3,
+      3
+    ]
+  },
+  "defined_laplacians_checked": 2818,
+  "graph_extensions": {
+    "checks": [
+      "distance inertia and characteristic polynomial including zero cofactor cases",
+      "distance inverse and Laplacian product identities",
+      "singular distance nullspace and adjugate entry",
+      "parameter bounds and upper equality cases",
+      "Laplacian quotient and full singular characteristic polynomials",
+      "exact Sturm root counts between distinct negative poles"
+    ],
+    "distance_inverse_cases": 2823,
+    "distance_quotient_cases": 2834,
+    "laplacian_characteristic_polynomial_cases": 2818,
+    "singular_full_characteristic_polynomials": 11,
+    "singular_negative_spectrum_sturm_counts": [
+      {
+        "part_sizes": [
+          1,
+          1,
+          2
+        ],
+        "residual_polynomial_descending": [
+          "1",
+          "2"
+        ],
+        "root_intervals": [
+          {
+            "left": "-infinity",
+            "right": "-1/2",
+            "roots": 1
+          }
+        ]
+      },
+      {
+        "part_sizes": [
+          1,
+          1,
+          3,
+          8
+        ],
+        "residual_polynomial_descending": [
+          "1",
+          "139/100",
+          "13/100"
+        ],
+        "root_intervals": [
+          {
+            "left": "-infinity",
+            "right": "-1/5",
+            "roots": 1
+          },
+          {
+            "left": "-1/5",
+            "right": "-1/20",
+            "roots": 1
+          }
+        ]
+      },
+      {
+        "part_sizes": [
+          1,
+          1,
+          4,
+          4
+        ],
+        "residual_polynomial_descending": [
+          "1",
+          "5/4"
+        ],
+        "root_intervals": [
+          {
+            "left": "-infinity",
+            "right": "-1/8",
+            "roots": 1
+          }
+        ]
+      },
+      {
+        "part_sizes": [
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "residual_polynomial_descending": [
+          "1",
+          "7/2"
+        ],
+        "root_intervals": [
+          {
+            "left": "-infinity",
+            "right": "-1/2",
+            "roots": 1
+          }
+        ]
+      },
+      {
+        "part_sizes": [
+          1,
+          1,
+          1,
+          2,
+          3,
+          8
+        ],
+        "residual_polynomial_descending": [
+          "1",
+          "339/100",
+          "6/5",
+          "2/25"
+        ],
+        "root_intervals": [
+          {
+            "left": "-infinity",
+            "right": "-1/2",
+            "roots": 1
+          },
+          {
+            "left": "-1/2",
+            "right": "-1/5",
+            "roots": 1
+          },
+          {
+            "left": "-1/5",
+            "right": "-1/20",
+            "roots": 1
+          }
+        ]
+      },
+      {
+        "part_sizes": [
+          1,
+          1,
+          1,
+          2,
+          4,
+          4
+        ],
+        "residual_polynomial_descending": [
+          "1",
+          "13/4",
+          "13/16"
+        ],
+        "root_intervals": [
+          {
+            "left": "-infinity",
+            "right": "-1/2",
+            "roots": 1
+          },
+          {
+            "left": "-1/2",
+            "right": "-1/8",
+            "roots": 1
+          }
+        ]
+      },
+      {
+        "part_sizes": [
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          2
+        ],
+        "residual_polynomial_descending": [
+          "1",
+          "5"
+        ],
+        "root_intervals": [
+          {
+            "left": "-infinity",
+            "right": "-1/2",
+            "roots": 1
+          }
+        ]
+      },
+      {
+        "part_sizes": [
+          1,
+          1,
+          1,
+          3,
+          4,
+          4,
+          8
+        ],
+        "residual_polynomial_descending": [
+          "1",
+          "66/25",
+          "117/200",
+          "11/400"
+        ],
+        "root_intervals": [
+          {
+            "left": "-infinity",
+            "right": "-1/5",
+            "roots": 1
+          },
+          {
+            "left": "-1/5",
+            "right": "-1/8",
+            "roots": 1
+          },
+          {
+            "left": "-1/8",
+            "right": "-1/20",
+            "roots": 1
+          }
+        ]
+      },
+      {
+        "part_sizes": [
+          1,
+          1,
+          1,
+          4,
+          4,
+          4,
+          4
+        ],
+        "residual_polynomial_descending": [
+          "1",
+          "19/8"
+        ],
+        "root_intervals": [
+          {
+            "left": "-infinity",
+            "right": "-1/8",
+            "roots": 1
+          }
+        ]
+      },
+      {
+        "part_sizes": [
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          3,
+          8
+        ],
+        "residual_polynomial_descending": [
+          "1",
+          "489/100",
+          "63/40",
+          "19/200"
+        ],
+        "root_intervals": [
+          {
+            "left": "-infinity",
+            "right": "-1/2",
+            "roots": 1
+          },
+          {
+            "left": "-1/2",
+            "right": "-1/5",
+            "roots": 1
+          },
+          {
+            "left": "-1/5",
+            "right": "-1/20",
+            "roots": 1
+          }
+        ]
+      },
+      {
+        "part_sizes": [
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          4,
+          4
+        ],
+        "residual_polynomial_descending": [
+          "1",
+          "19/4",
+          "1"
+        ],
+        "root_intervals": [
+          {
+            "left": "-infinity",
+            "right": "-1/2",
+            "roots": 1
+          },
+          {
+            "left": "-1/2",
+            "right": "-1/8",
+            "roots": 1
+          }
+        ]
+      }
+    ],
+    "zero_cofactor_distance_cases": 16
+  },
+  "parameter_lists": 2834,
+  "range": {
+    "ordering": "nondecreasing",
+    "part_size_max": 8,
+    "part_size_min": 1,
+    "parts_max": 8,
+    "parts_min": 2,
+    "vertices_max": 24
+  },
+  "singular_full_matrix_examples": [
+    {
+      "inertia": [
+        2,
+        1,
+        1
+      ],
+      "one_multiplicity": 1,
+      "part_sizes": [
+        1,
+        1,
+        2
+      ],
+      "quarter_multiplicity": 1
+    },
+    {
+      "inertia": [
+        10,
+        1,
+        2
+      ],
+      "one_multiplicity": 1,
+      "part_sizes": [
+        1,
+        1,
+        3,
+        8
+      ],
+      "quarter_multiplicity": 9
+    },
+    {
+      "inertia": [
+        7,
+        1,
+        2
+      ],
+      "one_multiplicity": 1,
+      "part_sizes": [
+        1,
+        1,
+        4,
+        4
+      ],
+      "quarter_multiplicity": 6
+    },
+    {
+      "inertia": [
+        4,
+        1,
+        2
+      ],
+      "one_multiplicity": 2,
+      "part_sizes": [
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "quarter_multiplicity": 2
+    },
+    {
+      "inertia": [
+        12,
+        1,
+        3
+      ],
+      "one_multiplicity": 2,
+      "part_sizes": [
+        1,
+        1,
+        1,
+        2,
+        3,
+        8
+      ],
+      "quarter_multiplicity": 10
+    },
+    {
+      "inertia": [
+        9,
+        1,
+        3
+      ],
+      "one_multiplicity": 2,
+      "part_sizes": [
+        1,
+        1,
+        1,
+        2,
+        4,
+        4
+      ],
+      "quarter_multiplicity": 7
+    },
+    {
+      "inertia": [
+        6,
+        1,
+        3
+      ],
+      "one_multiplicity": 3,
+      "part_sizes": [
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2
+      ],
+      "quarter_multiplicity": 3
+    },
+    {
+      "inertia": [
+        17,
+        1,
+        4
+      ],
+      "one_multiplicity": 2,
+      "part_sizes": [
+        1,
+        1,
+        1,
+        3,
+        4,
+        4,
+        8
+      ],
+      "quarter_multiplicity": 15
+    },
+    {
+      "inertia": [
+        14,
+        1,
+        4
+      ],
+      "one_multiplicity": 2,
+      "part_sizes": [
+        1,
+        1,
+        1,
+        4,
+        4,
+        4,
+        4
+      ],
+      "quarter_multiplicity": 12
+    },
+    {
+      "inertia": [
+        14,
+        1,
+        4
+      ],
+      "one_multiplicity": 3,
+      "part_sizes": [
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        8
+      ],
+      "quarter_multiplicity": 11
+    },
+    {
+      "inertia": [
+        11,
+        1,
+        4
+      ],
+      "one_multiplicity": 3,
+      "part_sizes": [
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        4,
+        4
+      ],
+      "quarter_multiplicity": 8
+    }
+  ],
+  "status": "all exact checks passed",
+  "structured_downdates": {
+    "cases_examined": 3615,
+    "checks": [
+      "both structured-downdate inertia triples",
+      "direct-sum kernel formula"
+    ],
+    "diagonal_values": [
+      -2,
+      -1,
+      0,
+      1,
+      2
+    ],
+    "dimension_max": 3,
+    "dimension_min": 1,
+    "negative_pivot_cases": 1408,
+    "nonzero_pivot_cases": 2816,
+    "positive_pivot_cases": 1408,
+    "singular_input_cases": 1272,
+    "vector_values": [
+      -1,
+      0,
+      1
+    ]
+  },
+  "zero_cofactor_lists_excluded": 16
+}

@@ -1,0 +1,608 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array,longtable}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{xurl}
+\setlength{\emergencystretch}{1em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\In}{\operatorname{In}}
+\newcommand{\cof}{\operatorname{cof}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\one}{\mathbf{1}}
+\newcommand{\R}{\mathbb{R}}
+\title{Resolving Das--Mohanty's concluding conjecture\newline
+(ELA 40 (2024), p.~488)\newline
+on the singular squared-distance Laplacian}
+\author{Haobo Ma\\\small ChronoAI Pte Ltd, Singapore
+\and Wenlin Zhang\\\small National University of Singapore\\\small ChronoAI Pte Ltd, Singapore}
+\date{3 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We prove both clauses of Das--Mohanty's concluding conjecture in
+\emph{Electronic Journal of Linear Algebra} 40 (2024), p.~488,
+for the matrix in equation~(3.7):
+the singular squared-distance Laplacian of a complete multipartite graph has
+positive eigenvalues $1/4$ and $1$ with their stated exact multiplicities,
+and inertia $(N-s-1,1,s)$.
+A rank-one representation gives the result without inverting the singular
+squared-distance matrix. The same representation gives the inertia throughout
+the nonzero-cofactor domain and corrects the nonsingular case of their
+Theorem~4.4(ii); $K_{1,1,3,3}$ has inertia $(5,1,2)$ rather than $(6,1,1)$.
+We also determine the remaining singular spectrum and prove the
+singular-input and continuous-family statements in MathOverflow
+question~513954, revision~2.
+\end{abstract}
+
+\section{The conjecture and the source matrix}
+Das and Mohanty's concluding conjecture \cite[p.~488]{DM24} concerns
+the Laplacian-like matrix $L$ in their equation~(3.7), for a complete
+$t$-partite graph $G=K_{n_1,\ldots,n_t}$ with $t\geq2$ and positive integer
+part sizes. The corresponding arXiv version \cite{DMpre} places the conjecture
+on p.~13 and the matrix in equation~(3.6). We use the journal locators below.
+Both clauses already appear on p.~13 of arXiv version~1, dated
+2 November 2023. The argument below proves them and gives an inertia
+formula on the full domain where $L$ is defined.
+
+The earlier study \cite{DMspectral} determines the squared-distance
+spectrum's signs and its energy; its matrix is $\Delta$, rather than $L$.
+Rank-one inverse formulas also occur for weighted trees
+\cite[Theorem~4.1]{Bapat19}, under that theorem's degree and nonvanishing
+hypotheses. The later starlike-block-graph paper \cite{DMstar} concerns a
+different graph class and its own Laplacian-like matrix. These results are
+distinct from the singular complete-multipartite conjecture considered here.
+The scalar-pivot congruence used below also settles the related question
+of Lucid \cite{Lucid}; Section~\ref{sec:family} gives its singular-input
+and continuous-family conclusions.
+
+Write
+\[
+ N=\sum_{i=1}^t n_i,\qquad
+ s=\#\{i:n_i\geq2\},\qquad h=\#\{i:n_i=1\},\qquad t=s+h.
+\]
+For a real symmetric matrix, inertia is ordered as
+$(\text{positive},\text{zero},\text{negative})$, counting algebraic multiplicity.
+The squared-distance matrix $\Delta$ has entries $0$ on its diagonal,
+$4$ between distinct vertices of the same part, and $1$ between different parts.
+The notation $\cof\Delta$ denotes the sum of \emph{all} cofactors.
+
+\begin{theorem}[Das--Mohanty's concluding conjecture]\label{thm:main}
+If $\det\Delta=0$, then $\cof\Delta\ne0$ and $L$ is defined.
+Its positive spectrum, with multiplicities, is
+\[
+ \{(1/4)^{[N-t]},\;1^{[h-1]}\},
+ \qquad\text{and}\qquad \In(L)=(N-s-1,1,s).
+\]
+In particular, both clauses hold on the source's inherited
+nonzero-cofactor domain.
+\end{theorem}
+
+Here are explicit definitions fixing the source notation. Set $d_i=3n_i-4$ and,
+for $S\subseteq\{1,\ldots,t\}$, put
+\[
+ \Phi_S=\prod_{i\in S}d_i,\qquad
+ \Psi_S=\sum_{i\in S} n_i\prod_{j\in S\setminus\{i\}}d_j,
+ \qquad \Theta_S=\Phi_S+\Psi_S.
+\]
+Empty products are one and empty sums are zero. A hat means evaluating the
+same function on the shortened list, as in \cite[Lemma~3.1(d)]{DM24}:
+thus $\Psi_{-i}=\sum_{k\ne i}n_k\prod_{\ell\notin\{i,k\}}d_\ell$.
+Write $\Phi,\Psi$ for the full list, with subscripts $-i$ and $-i,-j$
+for one and two omissions.
+The three entries of the source matrix are
+\begin{equation}\label{eq:source}
+ L_{uv}=\begin{cases}
+ \bigl((n_i-1)\Theta_{-i}+2(n_i-3)\Psi_{-i}\bigr)/(4\Psi),
+       &u=v\in V_i,\\
+ -\bigl(\Theta_{-i}+2\Psi_{-i}\bigr)/(4\Psi),
+       &u\ne v,\ u,v\in V_i,\\
+ \Phi_{-i,-j}/\Psi,&u\in V_i,\ v\in V_j,\ i\ne j.
+ \end{cases}
+\end{equation}
+
+\section{A rank-one representation}
+Let $J_m=\one_m\one_m^T$ and define
+\[
+ B=\diag(3J_{n_i}-4I_{n_i})_{i=1}^t,\qquad
+ A=-B^{-1},\qquad z=B^{-1}\one,\qquad
+ R=\sum_{i=1}^t\frac{n_i}{d_i}.
+\]
+Each $d_i$ is nonzero: it is $-1$ for a singleton and positive otherwise.
+Direct block multiplication gives
+\begin{equation}\label{eq:block}
+ \Delta=B+\one\one^T,\qquad
+ B_i^{-1}=-\tfrac14 I_{n_i}+\frac{3}{4d_i}J_{n_i},\qquad
+ z|_{V_i}=\frac1{d_i}\one_{n_i}.
+\end{equation}
+The rank-one determinant formula yields
+\begin{equation}\label{eq:det}
+ \det\Delta=\det B\,(1+R),\quad
+ \det B=(-4)^{N-t}\Phi,\quad
+ \cof\Delta=\det B\,R.
+\end{equation}
+For the last identity, differentiate
+$\det(\Delta+x\one\one^T)=\det B\,[1+(1+x)R]$ at $x=0$;
+the derivative of a determinant in the all-ones direction is its cofactor sum.
+The rank-one determinant formula itself follows by expanding in columns:
+all terms using two rank-one columns vanish.
+These identities recover the determinant, cofactor sum and zero criteria
+in the source's Theorems~2.4--2.6; the determinant also appears in the earlier
+spectral study \cite[Corollary~3.5]{DMspectral}.
+
+\begin{lemma}\label{lem:representation}
+On the domain $\cof\Delta\ne0$, equivalently $R\ne0$, the literal matrix
+\eqref{eq:source} satisfies
+\begin{equation}\label{eq:representation}
+ L=A+\frac{zz^T}{R}.
+\end{equation}
+If $\det\Delta=0$, then $R=-1$, $\Psi=-\Phi\ne0$, and $L=A-zz^T$.
+\end{lemma}
+\begin{proof}
+The omitted-list definitions give
+\[
+ \Psi=\Phi R,\qquad
+ \Phi_{-i}=\frac{\Phi}{d_i},\qquad
+ \Psi_{-i}=\frac{\Phi}{d_i}\left(R-\frac{n_i}{d_i}\right),\qquad
+ \Phi_{-i,-j}=\frac{\Phi}{d_id_j}\quad(i\ne j).
+\]
+Substitution into the three cases of \eqref{eq:source} gives respectively
+\[
+ \frac14-\frac{3}{4d_i}+\frac1{Rd_i^2},\qquad
+ -\frac{3}{4d_i}+\frac1{Rd_i^2},\qquad
+ \frac1{Rd_id_j}.
+\]
+These are exactly the entries of \eqref{eq:representation} by \eqref{eq:block}.
+Finally \eqref{eq:det} gives $R=-1$ in the singular case.
+\end{proof}
+
+\section{Inertia and the complete singular spectrum}
+We first give the general inertia formula; it also identifies the precise
+boundary relevant to the nonsingular source statement.
+\begin{theorem}\label{thm:general}
+For all positive integer part sizes and $R\ne0$,
+\begin{equation}\label{eq:general-inertia}
+ \In(L)=\begin{cases}
+ (N-s-1,1,s),&R<0,\\
+ (N-s,1,s-1),&R>0.
+ \end{cases}
+\end{equation}
+In particular, $\ker L=\R\one$ and $\operatorname{rank}L=N-1$.
+\end{theorem}
+\begin{proof}
+On the zero-sum subspace of each part, $A$ has eigenvalue $1/4$;
+on its constant vector it has eigenvalue $-1/d_i$.
+Consequently $\In(A)=(N-s,0,s)$. Put $v=A\one=-z$ and
+$\alpha=\one^TA\one=-R\ne0$. Consider
+\[
+ M=\begin{pmatrix}A&v\\v^T&\alpha\end{pmatrix}.
+\]
+Completing the square first in the $A$ block and then in the scalar block
+gives invertible congruences
+\[
+ M\sim\diag(A,0),\qquad
+ M\sim\diag(A-vv^T/\alpha,\alpha)=\diag(L,\alpha).
+\]
+Indeed its quadratic form is both
+$(x+y\one)^TA(x+y\one)$ and
+$x^TLx+\alpha(y+v^Tx/\alpha)^2$.
+Invertible changes of variables preserve the maximal dimensions of positive
+and negative subspaces and the nullity. Thus a positive direction is removed
+from $A$ if $\alpha>0$, and a negative direction if $\alpha<0$, in both cases
+adding one zero direction. This proves \eqref{eq:general-inertia}.
+Equation~\eqref{eq:representation} also gives $L\one=-z+zR/R=0$,
+so the one-dimensional kernel is as stated.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Singularity gives $R=-1$, so Theorem~\ref{thm:general} gives the inertia
+and \eqref{eq:det} gives the nonzero cofactor sum. Let
+\[
+ W=\{x\in\R^N:\ \sum_{u\in V_i}x_u=0\text{ for every }i\}.
+\]
+Its dimension is $N-t$. Equations~\eqref{eq:block} and
+\eqref{eq:representation} show $Ax=x/4$ and $z^Tx=0$ for $x\in W$,
+hence $Lx=x/4$. The vectors supported on singleton vertices whose total
+sum is zero form an $(h-1)$-dimensional space, on which $A$ is the identity
+and $z^Tx$ is minus that total sum; thus $Lx=x$ there.
+To justify $h-1$, note that
+\[
+ -1=R=-h+\sum_{n_i\ge2}\frac{n_i}{3n_i-4}.
+\]
+If $s=0$, this forces $t=h=1$, contrary to $t\ge2$; hence $s\ge1$ and $h\ge2$.
+The two positive eigenspaces just found have total dimension
+$(N-t)+(h-1)=N-s-1$, exactly the positive index.
+Real symmetry makes the matrix diagonalizable, so these are the exact
+algebraic multiplicities and no further positive eigenvalue is possible.
+\end{proof}
+
+\section{Consequences for the neighboring source results}
+\paragraph{The nonsingular inertia boundary.}
+Writing $S=\sum_{n_i\ge2}n_i/(3n_i-4)$, we have $R=S-h$.
+Thus the correct boundary in the source's Theorem~4.4(ii), equation~(4.14),
+is $S=h$, not $S=h-1$; $S=h$ is excluded because the cofactor sum vanishes.
+Theorem~\ref{thm:general} supplies both cases and includes the singular
+distance-matrix locus $S=h-1$ in the $R<0$ case.
+
+For an explicit nonsingular counterexample to the second branch of that
+source formula, take $G=K_{1,1,3,3}$. Here $N=8$, $s=h=2$, $S=6/5$, and
+\begin{gather*}
+ R=-4/5,\qquad \det\Delta=1280,\qquad\cof\Delta=-5120,\\
+ \det(xI-L)=x(x-1)(x-1/4)^4(x+1/5)(x+2).
+\end{gather*}
+So $\In(L)=(5,1,2)$, while the source's condition $h-1<S$
+selects $(6,1,1)$. The characteristic polynomial follows by direct substitution
+in \eqref{eq:source} and exact determinant calculation.
+
+\begin{corollary}\label{cor:cofactor}
+For $R\ne0$, every cofactor of $L$ equals
+$(-1)^{N-1}/\cof\Delta$, including when $\Delta$ is singular.
+\end{corollary}
+\begin{proof}
+Use $A,v,\alpha$ from the preceding proof and put
+$L_\varepsilon=A-(1-\varepsilon)vv^T/\alpha$ for $\varepsilon\ne0$.
+Multiplication and the rank-one determinant formula give
+\[
+ \det L_\varepsilon=\varepsilon\det A,\qquad
+ L_\varepsilon^{-1}=A^{-1}+\frac{1-\varepsilon}{\varepsilon\alpha}\one\one^T.
+\]
+Therefore the adjugate, a polynomial in the entries, has limit
+$\operatorname{adj}L=(\det A/\alpha)\one\one^T$ as $\varepsilon\to0$.
+Since $\det A=(-1)^N/\det B$ and $\alpha=-R$, formula~\eqref{eq:det}
+gives the stated cofactor.
+\end{proof}
+
+\begin{corollary}\label{cor:multiplicities}
+For every $R\ne0$, the multiplicity of $1/4$ is $N-t$.
+The multiplicity of $1$ is $h-1$ if $h\ge1$, and zero if $h=0$.
+\end{corollary}
+\begin{proof}
+Besides $W$, use its orthogonal complement $C$, the partwise-constant vectors.
+In the orthonormal basis $\one_{V_i}/\sqrt{n_i}$, the restriction of $L$ is
+\[
+ T=\diag(-1/d_i)+qq^T/R,\qquad q_i=\sqrt{n_i}/d_i.
+\]
+The diagonal entries of $D=\diag(-1/d_i-1/4)$ are
+$-3n_i/(4d_i)\ne0$. The determinant formula gives
+\[
+ \det(T-\tfrac14 I)=\det D\left(1-\frac4{3R}\sum_i\frac1{d_i}\right)
+ =\det D\,\frac{t}{3R}\ne0,
+\]
+using $R=t/3+(4/3)\sum_i1/d_i$. Hence no further $1/4$ occurs in $C$.
+If $h\ge1$, a singleton coordinate of $(T-I)y=0$ forces $q^Ty=0$.
+Every nonsingleton coordinate then vanishes, leaving exactly the singleton
+zero-sum space of dimension $h-1$.
+If $h=0$, all $d_i>0$, and the analogous determinant factor for $T-I$ is
+\[
+ 1-\frac1R\sum_i\frac{n_i}{d_i(d_i+1)}
+ =\frac1R\sum_i\frac{n_i}{d_i+1}>0.
+\]
+It is nonzero, so $1$ does not occur. The eigenvalue $1/4$ on $W$ is distinct
+from $1$, completing the proof.
+\end{proof}
+
+\begin{corollary}[Positive spectrum beyond the singular locus]\label{cor:negative-ratio}
+For every $R<0$, one has $h\ge1$ and the complete positive spectrum of $L$
+is $\{(1/4)^{[N-t]},1^{[h-1]}\}$, with zero multiplicities omitted.
+Thus the spectral conclusion of Theorem~\ref{thm:main} holds on the
+entire negative-ratio domain, not just at $R=-1$.
+\end{corollary}
+\begin{proof}
+Every nonsingleton term in $R$ is positive, so $R<0$ forces $h\ge1$.
+Corollary~\ref{cor:multiplicities} supplies positive eigenspaces of total
+dimension $(N-t)+(h-1)=N-s-1$. This is the full positive index in
+Theorem~\ref{thm:general}, so symmetry excludes further positive roots.
+\end{proof}
+
+\begin{corollary}[Inverse and singular nullspace]\label{cor:inverse}
+For $R\ne-1$,
+\[
+ \Delta^{-1}=B^{-1}-\frac{zz^T}{1+R}.
+\]
+This includes the zero-cofactor case $R=0$, in which $L$ is undefined.
+For $R=-1$,
+\[
+ \ker\Delta=\R z,\qquad
+ \operatorname{adj}\Delta=-\det B\,zz^T.
+\]
+If $R\ne0$, set $\nu=z/R$ and $\lambda=(1+R)/R$. Then
+$\one^T\nu=1$, $\Delta\nu=\lambda\one$ and
+$L\Delta+I=\nu\one^T$. If also $R\ne-1$, then
+$\Delta^{-1}=-L+\nu\nu^T/\lambda$.
+\end{corollary}
+\begin{proof}
+Multiplication by $B+\one\one^T$ proves the inverse formula.
+More generally, for $B+u\one\one^T$ the same computation and determinant
+identity give
+\[
+ \operatorname{adj}(B+u\one\one^T)
+ =\det B\bigl[(1+uR)B^{-1}-u zz^T\bigr].
+\]
+It first holds when $1+uR\ne0$, then for every $u$ by polynomial equality.
+Set $u=1$ and $R=-1$. If $\Delta v=0$, then
+$v=-z(\one^Tv)$, while $\Delta z=(1+R)\one=0$;
+this proves the nullspace statement. The remaining identities follow by
+multiplying \eqref{eq:representation} by $\Delta$ and using
+$\one^Tz=R$.
+The inverse formulas recover \cite[Theorems~3.4--3.5]{DM24}; the two
+product identities recover its Lemmas~3.2--3.3 without requiring
+$\Delta$ to be invertible.
+For the literal blocks of Theorem~3.5, use $\Theta=\Phi(1+R)$ and
+\[
+ \frac3{4d_i}-\frac1{d_i^2(1+R)}
+ =\frac{3\Theta_{-i}+\Phi_{-i}}{4\Theta},\qquad
+ -\frac1{d_id_j(1+R)}=-\frac{\Phi_{-i,-j}}{\Theta}.
+\]
+\end{proof}
+
+\begin{corollary}[Parameter bounds]\label{cor:bounds}
+If $\Delta$ is singular, then
+\[
+ \frac{t+3}{4}<h\le\frac{t+1}{2}.
+\]
+If $\cof\Delta=0$, then $t/4<h\le t/2$.
+In either upper equality case every nonsingleton part has size two.
+\end{corollary}
+\begin{proof}
+For every $n_i\ge2$,
+$1/3<n_i/(3n_i-4)\le1$, with upper equality exactly when $n_i=2$.
+Both cases have $s>0$. Sum these inequalities and substitute respectively
+$S=h-1$ or $S=h$, with $s=t-h$.
+This also proves the bounds in \cite[Theorem~2.6]{DM24}.
+\end{proof}
+
+\begin{corollary}[Squared-distance inertia and energy]\label{cor:delta}
+For all positive integer part sizes,
+\[
+ \In(\Delta)=\begin{cases}
+ (s+1,0,N-s-1),&R<-1,\\
+ (s,1,N-s-1),&R=-1,\\
+ (s,0,N-s),&R>-1.
+ \end{cases}
+\]
+If $h=0$, the squared-distance energy
+$E_\Delta=\sum_{\mu\in\operatorname{spec}\Delta}|\mu|$ equals $8(N-t)$.
+If $h\ge1$, write $\mu_*$ for the unique eigenvalue of the
+partwise-constant restriction lying between $-1$ and
+$\min_{n_i\ge2}d_i$ when $s>0$; when $s=0$, put $\mu_*=t-1$.
+Then
+\[
+ E_\Delta=8(N-t)+2(h-1)-2\min(\mu_*,0).
+\]
+Here $\mu_*$ is positive, zero or negative according as $R<-1$,
+$R=-1$ or $R>-1$. In particular the singular case has
+$E_\Delta=8(N-t)+2(h-1)$.
+\end{corollary}
+\begin{proof}
+The matrix
+$\left(\begin{smallmatrix}B&\one\\\one^T&-1\end{smallmatrix}\right)$
+is congruent both to $\diag(\Delta,-1)$ and to
+$\diag(B,-1-R)$. Since $\In(B)=(s,0,N-s)$,
+comparison gives the displayed inertia, also at $R=-1$.
+On the partwise-zero-sum space $\Delta$ equals $-4I$; on singleton
+zero-sum vectors it equals $-I$.
+On the orthonormal constant basis its matrix is
+$\diag(d_i)+rr^T$, $r_i=\sqrt{n_i}$.
+For $h\ge1$ and $s>0$, the secular function
+$1-\sum_i n_i/(x-d_i)$ has strictly positive derivative between its
+distinct poles. It goes from $-\infty$ to $+\infty$ between the first
+two poles, $-1$ and $\min_{n_i\ge2}d_i$, and all its other roots and
+other repeated diagonal eigenvalues are positive. Its one root in that
+interval is $\mu_*$. The inertia determines its sign. When $s=0$,
+$\Delta=J-I$ gives the stated exception directly. Thus the negative
+eigenvalues are $-4$ repeated $N-t$ times, $-1$ repeated $h-1$ times,
+and $\mu_*$ when negative. If $h=0$, all $d_i>0$, so the constant
+restriction is positive definite. In both cases use
+$\operatorname{tr}\Delta=0$ to obtain the energy formula.
+These recover \cite[Theorems~4.1 and~4.5]{DMspectral}; they are not
+additional conjectures.
+\end{proof}
+
+\begin{corollary}[Characteristic polynomial and negative spectrum]\label{cor:polynomial}
+For $R\ne0$, as a polynomial identity after clearing the displayed poles,
+\begin{equation}\label{eq:characteristic}
+ \det(xI-L)=(x-1/4)^{N-t}\prod_i(x+1/d_i)
+ \left(1-\frac1R\sum_i\frac{n_i}{d_i^2(x+1/d_i)}\right).
+\end{equation}
+In the singular case, let $m_1<\cdots<m_g$ be the distinct
+nonsingleton sizes, $k_j$ their numbers of parts, and
+$a_j=-1/(3m_j-4)$. The negative spectrum consists of
+$a_j$ with multiplicity $k_j-1$, one simple eigenvalue in
+$(-\infty,a_1)$, and one simple eigenvalue in each
+$(a_j,a_{j+1})$, $1\le j<g$.
+\end{corollary}
+\begin{proof}
+Use the constant restriction $T$ from the proof of
+Corollary~\ref{cor:multiplicities}, and apply the rank-one determinant
+formula to $xI-T$. This proves \eqref{eq:characteristic} off the poles,
+hence identically. Equal-size parts give the diagonal eigenvalue $a_j$
+on their $(k_j-1)$-dimensional weighted-zero-sum space; singleton parts
+likewise give $1$ with multiplicity $h-1$.
+When $R=-1$, the remaining secular function is
+\[
+ f(x)=1+\frac{h}{x-1}+
+ \sum_{j=1}^g\frac{k_jm_j}{(3m_j-4)^2(x-a_j)}.
+\]
+Every residue is positive, so $f'(x)<0$ between poles.
+The limits give exactly one simple root below $a_1$ and between every
+successive pair of poles, and none above $1$. Its root in $(a_g,1)$ is
+$0$, since $f(0)=1+R=0$. The other $g$ roots are therefore precisely
+the negative roots listed. No pole is one of these roots.
+\end{proof}
+
+\section{The cross-referenced rank-one question}\label{sec:family}
+In MathOverflow question~513954 (revision~2, 5 August 2026), Lucid
+\cite{Lucid} states the diagonal-input inertia formula and asks about a
+continuous family's negative coordinate. The question already displays
+the decisive hyperplane congruences. The following gives the conclusions,
+with the inertia statement strengthened to arbitrary symmetric inputs.
+
+\begin{corollary}[Structured downdates, including singular inputs]\label{cor:structured}
+Let $H$ be any real symmetric matrix, $u$ a vector, and
+$p=u^THu\ne0$. Put $K=H-(Hu)(Hu)^T/p$. If
+$\In(H)=(b_+,b_0,b_-)$, then
+\[
+ \In(K)=\begin{cases}
+ (b_+-1,b_0+1,b_-),&p>0,\\
+ (b_+,b_0+1,b_--1),&p<0,
+ \end{cases}
+ \qquad \ker K=\ker H\oplus\R u.
+\]
+\end{corollary}
+\begin{proof}
+Replace $A,\one,v,\alpha$ in the bordered-matrix proof of
+Theorem~\ref{thm:general} by $H,u,Hu,p$. The same two square
+completions give $\diag(H,0)\sim\diag(K,p)$; neither requires
+$H^{-1}$. Subtract the scalar inertia of $p$ to obtain the formula.
+Also $Kv=0$ implies
+$H(v-cu)=0$, where $c=u^THv/p$; the converse inclusion follows from
+$Ku=0$ and $\ker H\subseteq\ker K$.
+The sum is direct because $u^THu\ne0$ implies $u\notin\ker H$.
+\end{proof}
+
+\begin{corollary}[Connected families and a fixed negative coordinate]\label{cor:family}
+Let $Y$ be a nonempty connected topological space. Suppose
+$D(y)=\diag(e_1(y),\ldots,e_n(y))$ and $u(y)$ are continuous,
+$p(y)=u(y)^TD(y)u(y)\ne0$, and
+$K(y)=D(y)-(D(y)u(y))(D(y)u(y))^T/p(y)$ is positive semidefinite.
+Then $p$ has constant sign. If it is negative, there is a unique fixed
+index $j$ with $e_j(y)<0$ for all $y$, and $e_i(y)\ge0$ for every
+$i\ne j$ and $y$. If it is positive, $D(y)$ is positive semidefinite.
+This applies to an open $(n-1)$-simplex with finitely many points removed
+when $n\ge3$, and to every space homeomorphic to that domain.
+\end{corollary}
+\begin{proof}
+The continuous nonzero function $p$ has constant sign on $Y$.
+Corollary~\ref{cor:structured} and $K(y)\succeq0$ imply that $D(y)$
+has exactly one negative coordinate when $p<0$, and none when $p>0$.
+For $p<0$, each set $\{y:e_i(y)<0\}$ is open, and its complement is
+the union of the analogous sets for all other coordinates. These sets
+are therefore clopen, disjoint, and cover $Y$. Connectedness forces
+exactly one of them to be all of $Y$.
+Finally an open simplex of dimension at least two is path connected
+after finitely many deletions: join any two remaining points through
+a third interior point outside the finitely many lines through either
+endpoint and a deleted point. The two line segments avoid all deleted
+points. Such a third point exists because finitely many lines cannot
+cover an open set in dimension at least two. Homeomorphisms preserve
+this property.
+\end{proof}
+
+\section{Coverage and verification}
+The neighboring results covered by the argument are recorded explicitly.
+\begingroup\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{.36\linewidth}>{\raggedright\arraybackslash}p{.55\linewidth}}
+\toprule
+Source item in \cite{DM24} & Mathematical coverage\\
+\midrule
+\endhead
+Concluding conjecture (i), p.~488 & Proved: exact positive spectrum, Theorem~\ref{thm:main}.\\
+Concluding conjecture (ii), p.~488 & Proved: inertia $(N-s-1,1,s)$, Theorem~\ref{thm:main}.\\
+Theorems~2.4--2.6 & Prior proof cited; determinant and cofactor formulas recovered in \eqref{eq:det}; bounds and equality cases proved in Corollary~\ref{cor:bounds}.\\
+Lemma~2.1; Proposition~2.2; Lemma~2.3 & Prior proof cited; elementary cofactor and block-determinant tools, not additional questions.\\
+Lemma~3.1 and Appendix~A & Prior proof cited; shortened-list convention used explicitly in Lemma~\ref{lem:representation}.\\
+Lemmas~3.2--3.3; Theorems~3.4--3.5 & Proved in Corollary~\ref{cor:inverse}, including the inverse when $R=0$ and the singular nullspace.\\
+Theorem~4.1 & Rank recovered; cofactor formula extended to singular $\Delta$ in Corollary~\ref{cor:cofactor}.\\
+Proposition~4.2; Corollary~4.5 & Multiplicities proved for all $R\ne0$ in Corollary~\ref{cor:multiplicities}.\\
+Theorem~4.3 & Prior proof cited; rank-one interlacing, with the needed secular argument given explicitly above.\\
+Theorem~4.4(i) & Proved by Theorem~\ref{thm:general} when $h=0$; prior formula cited.\\
+Theorem~4.4(ii), equation~(4.14) & Refuted and corrected by Theorem~\ref{thm:general}; witness $K_{1,1,3,3}$.\\
+\cite[Theorems~4.1, 4.5]{DMspectral} & Proved: inertia and energy recovered in Corollary~\ref{cor:delta}; prior formulas cited.\\
+\cite[Sections~5--6]{DMspectral} & Not covered: spectral-radius and energy extremal comparisons and majorization; these are established source results, not open claims.\\
+\cite{Lucid}, revision~2, inertia formula & Proved in Corollary~\ref{cor:structured}; singular symmetric inputs included. The source already supplies the congruence mechanism.\\
+\cite{Lucid}, revision~2, family corollary & Proved in Corollary~\ref{cor:family}; general connected domains included.\\
+\bottomrule
+\end{longtable}
+\endgroup
+
+The universal assertions above have complete written proofs. The pinned
+\href{https://github.com/the-omega-institute/trureturing/blob/a2d277ea0980f1230eff2c7e27838372effccb30/D5/S3/Combinatorics/SpectralGraph/DasMohantySingularSquaredDistance.lean}{Lean source}
+contains the declaration \texttt{result}, which proves both clauses of
+Theorem~\ref{thm:main} under the original nonzero-cofactor hypothesis.
+All three declarations are in the namespace
+\begin{quote}\small\ttfamily
+D5.S3.Combinatorics.SpectralGraph.\\
+DasMohantySingularSquaredDistance
+\end{quote}
+\noindent
+\texttt{singular\_source\_downdate} proves the singular rank-one representation.
+\par\noindent
+\texttt{singular\_source\_reduction} gives the inertia transfer and the two
+eigenvector families.
+The pinned
+\href{https://github.com/the-omega-institute/trureturing/blob/a2d277ea0980f1230eff2c7e27838372effccb30/D5/S3/QuadraticForms/StructuredRankOneInertia.lean}{StructuredRankOneInertia.lean}
+contains \texttt{inertia\_downdate}, \texttt{kernel\_split} and
+\texttt{nullity\_downdate}, with the arbitrary symmetric-input scope
+of Corollary~\ref{cor:structured}. The pinned
+\href{https://github.com/the-omega-institute/trureturing/blob/a2d277ea0980f1230eff2c7e27838372effccb30/D5/S3/QuadraticForms/StructuredRankOneFamily.lean}{StructuredRankOneFamily.lean}
+contains \texttt{mo513954\_revision2}, covering both original diagonal
+clauses of \cite{Lucid}, including its finitely punctured simplex domain.
+\par\noindent
+\texttt{punctured\_simplex\_pathConnected} supplies that domain's topology.
+\par\noindent
+\texttt{continuous\_family} supplies the fixed-index conclusion.
+Its namespace is
+\path{D5.S3.QuadraticForms.StructuredRankOneFamily}; the preceding
+file uses \path{D5.S3.QuadraticForms.StructuredRankOneInertia}.
+The general $R\ne0$ graph formula, nonsingular correction, additional
+graph corollaries and the extension to arbitrary connected parameter spaces
+are written proofs here; the latter extension exceeds the family's
+stated simplex-domain scope.
+
+The accompanying \texttt{verify.py} uses exact rational arithmetic. It checks
+all nondecreasing lists of two to eight part sizes, each between one and eight,
+with $N\le24$: 2,834 lists, of which 2,818 have $R\ne0$ and 11 are singular.
+It checks the source entries, the constant-subspace inertia and exact
+multiplicities throughout that domain, and the full matrices in all 11 singular
+cases. It also checks the displayed characteristic polynomial for $K_{1,1,3,3}$,
+the distance-matrix quotient throughout all 2,834 lists (including $R=0$),
+and \eqref{eq:characteristic} throughout the 2,818 defined cases.
+Exact Sturm counts locate all residual negative roots in the 11 singular
+cases. A separate exhaustive finite check tests the structured downdate
+for diagonal entries in $\{-2,-1,0,1,2\}$ and vector entries in
+$\{-1,0,1\}$ in dimensions one to three, whenever the pivot is nonzero.
+These finite checks illustrate the formulas; the proofs establish their
+unrestricted stated scopes.
+
+\begin{thebibliography}{9}
+\raggedright
+\bibitem{DM24}
+J.~Das and S.~Mohanty,
+Inverse of the squared distance matrix of a complete multipartite graph,
+\emph{Electronic Journal of Linear Algebra} \textbf{40} (2024), 475--490.
+\href{https://doi.org/10.13001/ela.2024.8283}{doi:10.13001/ela.2024.8283}.
+\bibitem{DMpre}
+J.~Das and S.~Mohanty,
+Inverse of the Squared Distance Matrix of a Complete Multipartite Graph,
+\href{https://arxiv.org/abs/2311.01069v2}{arXiv:2311.01069v2}, 18 April 2024.
+Author version of \cite{DM24}.
+\bibitem{DMspectral}
+J.~Das and S.~Mohanty,
+On squared distance matrix of complete multipartite graphs,
+\emph{Indian Journal of Pure and Applied Mathematics} \textbf{55} (2024), 517--537.
+\href{https://doi.org/10.1007/s13226-023-00386-2}{doi:10.1007/s13226-023-00386-2}.
+\bibitem{Bapat19}
+R.~B. Bapat,
+Squared distance matrix of a weighted tree,
+\emph{Electronic Journal of Graph Theory and Applications}
+\textbf{7} (2019), 301--313.
+\href{https://doi.org/10.5614/ejgta.2019.7.2.8}{doi:10.5614/ejgta.2019.7.2.8}.
+\bibitem{DMstar}
+J.~Das and S.~Mohanty,
+On the Squared Distance Matrix of a Starlike Block Graph,
+\href{https://arxiv.org/abs/2509.10854v3}{arXiv:2509.10854v3},
+25 September 2025.
+\bibitem{Lucid}
+Lucid,
+Inertia of a singular diagonal matrix after a structured rank-one downdate,
+MathOverflow question~513954, revision~2, 5 August 2026.
+\href{https://mathoverflow.net/revisions/513954/2}{mathoverflow.net/revisions/513954/2}.
+\end{thebibliography}
+
+\medskip\noindent\small
+\textcopyright\ 2026 Haobo Ma and Wenlin Zhang.
+Licensed under \href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International (CC BY 4.0)}.
+\end{document}
