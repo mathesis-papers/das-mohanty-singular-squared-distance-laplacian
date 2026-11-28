@@ -31,6 +31,7 @@
     "concept_doi": "10.5281/zenodo.23965055",
     "current_version": 2,
     "doi": "10.5281/zenodo.23965056",
+    "kind": "note",
     "lean_source": {
       "revision": "a2d277ea0980f1230eff2c7e27838372effccb30",
       "url": "https://github.com/the-omega-institute/trureturing/blob/a2d277ea0980f1230eff2c7e27838372effccb30/D5/S3/Combinatorics/SpectralGraph/DasMohantySingularSquaredDistance.lean"
@@ -55,10 +56,12 @@
     "title": "Resolving Das–Mohanty's concluding conjecture (ELA 40 (2024), p. 488) on the singular squared-distance Laplacian",
     "versions": [
       {
+        "changelog": null,
         "previous_version": null,
         "published_on": "2026-11-25T19:16:10.212232770Z",
         "revision": "2",
-        "version": 2
+        "version": 2,
+        "version_label": null
       }
     ],
     "work": "das-mohanty-singular-squared-distance-laplacian"
